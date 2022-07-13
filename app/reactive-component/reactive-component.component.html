@@ -1,0 +1,104 @@
+<form [formGroup]="reactiveForm">
+    <table>
+      <tr>
+        <td>User Name:</td>
+        <td>
+          <input formControlName="username" />
+          <div
+            *ngIf="reactiveForm.get('username')?.errors != null"
+            [ngClass]="'error'"
+          >
+            <div *ngIf="reactiveForm.get('username')?.errors">
+              User Name should only in aphabets.
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Password:</td>
+        <td>
+          <input type="password" formControlName="password" />
+          <div
+            *ngIf="reactiveForm.get('password')?.errors != null"
+            [ngClass]="'error'"
+          >
+            <div *ngIf="reactiveForm.get('password')?.errors">
+              Password required.
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Email:</td>
+        <td>
+          <input formControlName="email" />
+          <div
+            *ngIf="
+              (reactiveForm.get('email')?.dirty ||
+                reactiveForm.get('email')?.touched) &&
+              reactiveForm.get('email')?.invalid
+            "
+            [ngClass]="'invalid'"
+          >
+            Invalid Email
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td><button>Submit</button></td>
+        <td>
+          <div>
+            <button type="button" (click)="setDefault()">Default</button>
+          </div>
+        </td>
+        <td>
+          <div>
+            <button type="button" (click)="setValue()">SetValue</button>
+          </div>
+        </td>
+        <td>
+          <div>
+            <button type="button" (click)="patchName()">Name</button>
+            <button type="button" (click)="reset()">Reset</button>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </form>
+  <br />
+  <br />
+  <!-- <form [formGroup]="reactiveFormOne">
+    <table>
+      <tr>
+        <td>Email:</td>
+        <td>
+          <input formControlName="email" />
+          <div
+            *ngIf="
+              (reactiveFormOne.get('email').touched ||
+                reactiveFormOne.get('email').dirty) &&
+              reactiveFormOne.get('email').invalid
+            "
+            [ngClass]="'error'"
+          >
+            <div *ngIf="reactiveFormOne.get('email')?.errors">email</div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Confirmemail</td>
+        <td>
+          <input type="email" formControlName="confirmEmail" />
+          <div
+            *ngIf="
+              reactiveFormOne.get('confirmEmail').touched &&
+              reactiveFormOne.get('confirmEmail').hasError('nomatch')
+            "
+          >
+            ConfirmEmail email
+          </div>
+        </td>
+      </tr>
+    </table>
+  </form> -->
+  
